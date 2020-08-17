@@ -1,0 +1,20 @@
+{% extends "app/base.html" %}
+{% block title %}Top Up{% endblock %}
+{% load staticfiles %}
+
+{% block body %}
+  {% block content %}
+    <div class="jumbotron">
+      <h2>Top Up</h2>
+      <hr class="my-4">
+      {% load crispy_forms_tags %}
+      <form action="{% url 'top_up' %}" method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="text-center">
+              <button class="btn btn-primary btn-lg" type="submit">チャージ</button>
+          </div>
+      </form>
+    </div>
+  {% endblock %}
+{% endblock %}

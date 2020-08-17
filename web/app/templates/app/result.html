@@ -1,0 +1,180 @@
+{% extends "app/base.html" %}
+{% block title %}Analysis Result{% endblock %}
+{% load staticfiles %}
+
+{% block body %}
+    {% block content %}
+        <h2>Analysis Result</h2>
+        <hr class="my-4">
+        <h3>Bio</h3>
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-5">
+            <div class="col-lg-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ cards.target.icon.thumbnail.url }}"  style="width: 100%; height: 300px; object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="../students/{{ cards.target.id }}">{{ cards.target.name }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ cards.target.id }}</h6>
+                        <p class="card-text">推定年齢: {{ faces.target.age }}<br>推定性別: {{ faces.target.gender }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" colspan="2" style="text-align: center">類似度</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">自由テキスト</th>
+                                        <td>{{ bio_sim_bio }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">画像</th>
+                                        <td>{{ icon_sim_bio }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">総合</th>
+                                        <td>{{ total_sim_bio }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ cards.bio.icon.thumbnail.url }}"  style="width: 100%; height: 300px; object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="../students/{{ cards.bio.id }}">{{ cards.bio.name }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ cards.bio.id }}</h6>
+                        <p class="card-text">推定年齢: {{ faces.bio.age }}<br>推定性別: {{ faces.bio.gender }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <h3>Suggest words</h3>
+            {{ words.bio }}
+        </div>
+        <hr class="my-4">
+        <h3>Image</h3>
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-5">
+            <div class="col-lg-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ cards.target.icon.thumbnail.url }}"  style="width: 100%; height: 300px; object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="../students/{{ cards.target.id }}">{{ cards.target.name }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ cards.target.id }}</h6>
+                        <p class="card-text">推定年齢: {{ faces.target.age }}<br>推定性別: {{ faces.target.gender }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" colspan="2" style="text-align: center">類似度</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">自由テキスト</th>
+                                        <td>{{ bio_sim_icon }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">画像</th>
+                                        <td>{{ icon_sim_icon }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">総合</th>
+                                        <td>{{ total_sim_icon }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ cards.icon.icon.thumbnail.url }}"  style="width: 100%; height: 300px; object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="../students/{{ cards.icon.id }}">{{ cards.icon.name }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ cards.icon.id }}</h6>
+                        <p class="card-text">推定年齢: {{ faces.icon.age }}<br>推定性別: {{ faces.icon.gender }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <h3>Suggest words</h3>
+            {{ words.icon }}
+        </div>
+        <hr class="my-4">
+        <h3>Bio & Image</h3>
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-5">
+            <div class="col-lg-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ cards.target.icon.thumbnail.url }}"  style="width: 100%; height: 300px; object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="../students/{{ cards.target.id }}">{{ cards.target.name }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ cards.target.id }}</h6>
+                        <p class="card-text">推定年齢: {{ faces.target.age }}<br>推定性別: {{ faces.target.gender }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" colspan="2" style="text-align: center">類似度</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">自由テキスト</th>
+                                        <td>{{ bio_sim_total }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">画像</th>
+                                        <td>{{ icon_sim_total }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">総合</th>
+                                        <td>{{ total_sim_total }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ cards.total.icon.thumbnail.url }}"  style="width: 100%; height: 300px; object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="../students/{{ cards.total.id }}">{{ cards.total.name }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ cards.total.id }}</h6>
+                        <p class="card-text">推定年齢: {{ faces.total.age }}<br>推定性別: {{ faces.total.gender }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <h3>Suggest words</h3>
+            {{ words.total }}
+        </div>
+    {% endblock %}
+{% endblock %}

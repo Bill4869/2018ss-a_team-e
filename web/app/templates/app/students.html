@@ -1,0 +1,31 @@
+{% extends "app/base.html" %}
+{% block title %}Student List{% endblock %}
+{% load staticfiles %}
+
+{% block body %}
+  {% block content %}
+    <h2>Student List</h2>
+    <hr class="my-4">
+    {% for card in cards %}
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+        <div class="col-lg-3">
+          <div class="text-center">
+            <img class="img-fluid" src="{{ card.icon.url }}" style="width: 300px; height: 300px; object-fit: cover">
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="bg-black text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left">
+                <h4 class="text-white"><a href="{{ card.id }}">[{{ card.id }}] {{ card.name }}</a></h4>
+                <p class="mb-0 text-white-50">{{ card.bio }} (残高: {{ card.balance }})</p>
+                <hr class="d-none d-lg-block mb-0 ml-0">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endblock %}
+{% endblock %}
+
